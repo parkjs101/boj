@@ -1,37 +1,29 @@
-n, m = map(int,input().split())
+import sys
+n, m = map(int, sys.stdin.readline().split())
+board = []
+for i in range(n):
+    board.append(sys.stdin.readline().rstrip()) 
 
-c1 = [[0 for _ in range(n)] for _ in range(m)]
-c2 = [[0 for _ in range(n)] for _ in range(m)]
-c = [[0 for _ in range(n)] for _ in range(m)]
+case = 999999999999
 
-n1 = 0
-n2 = 0
+for i in range(n-7):
+    for j in range(m-7):
+        case1 = 0
+        case2 = 0
+        for l in range(8):
+            for k in range(8):
+                if (i+j+k+l)%2 == 0:
+                    if board[i+k][j+l] == 'W':
+                        case1 += 1
+                    else:
+                        case2 += 1
+                else:
+                    if board[i+k][j+l] == 'B':
+                        case1 += 1
+                    else:
+                        case2 += 1
 
-count = []
+        case = min(case1, case2, case)
 
-for i in range(8):
-    for j in range(8):
-        if (i%2 == 1 and j%2==1) or (i%2 == 0 and j%2 == 0):
-            c1[i][j] = 'W'
-            c2[i][j] = 'B'
-        else:
-            c1[i][j] = 'B'
-            c2[i][j] = 'W'
+print(case)
 
-for i in range(m):
-    a = str(input())
-    for j in range(n):
-        c[i][j] = a[j]
-
-for a in range(m-7):
-    for b in range(n-7):
-
-        for i in range(8):
-            for j in range(8):
-                if c[i+a][j+b] != c1[i][j]:
-                    n1 += 1
-                elif c[i+a][j+b] != c2[i][j]:
-                    n2 += 1
-        count.append(min(n1,n2))
-
-print(min(count))

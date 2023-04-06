@@ -1,36 +1,23 @@
 n = int(input())
+result = []
 
-result = [0]*n
 
 for i in range(n):
-
     s = input()
-
-    li = [0]*len(s)
-
+    li = []
     for j in range(len(s)):
-        li[i] = s[i]
+        li.append(s[j])
+        if len(li)>1:
+            if li[-2] == '(' and li[-1] ==')':
+                li.pop()
+                li.pop()
+            else: 
+                pass
 
-    while len(li)>0:
-        if len(li) == 0:
-            result[i] = 'YES'
-            break
-
-        elif 0 in li:
-            li.remove(0)
-
-        else:
-            result[i] = 'NO'
-            break
-
-        for k in range(len(li)-1):
-            if li[k] == '(' and li[k+1] == ')':
-                li[k] = 0
-                li[k+1] = 0
-                
     if len(li) == 0:
-        result[i] = 'YES'
-        
+        result.append('YES')
+    else:
+        result.append('NO')
 
 for i in range(n):
     print(result[i])

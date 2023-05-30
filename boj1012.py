@@ -15,27 +15,27 @@ for i in range(T):
 		x, y = map(int, sys.stdin.readline().split())
 		board[y][x] = 1
 	
-	for i in range(m):
-		for j in range(n):
-			if board[j][i] != 1 or board[j][i] == vis[j][i]:
+	for i in range(n):
+		for j in range(m):
+			if board[i][j] != 1 or board[i][j] == vis[i][j]:
 				continue
 			else:
-				vis[j][i] = 1
+				vis[i][j] = 1
 				dq.append((j,i))
 				w += 1
 				while dq:
-					cx = dq[0][1]
-					cy = dq[0][0]
+					cx = dq[0][0]
+					cy = dq[0][1]
 					dq.popleft()
 					for k in range(4):
-						nx = cx + dy[k]
-						ny = cy + dx[k]
+						nx = cx + dx[k]
+						ny = cy + dy[k]
 						if nx<0 or nx>=m or ny<0 or ny>=n:
 							continue
-						elif board[ny][nx] != 1 or board[j][i] == vis[j][i]:
+						elif board[ny][nx] != 1 or board[ny][nx] == vis[ny][nx]:
 							continue
 						else:
-							dq.append((ny, nx))
+							dq.append((nx, ny))
 							vis[ny][nx] = 1
 
 	print(w)

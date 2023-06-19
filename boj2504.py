@@ -1,61 +1,26 @@
-s = input()
-total = 0
-li = []
-li.append(s[0])
-stack = []
-floor = []
+array = input()
 
-for i in range(1, len(s)):
-    li.append(s[i])
-
-    if li[-1] == ')' and s[i-1] == '(':
-        if len(stack) == 0 or (len(li)-2 not in floor):
-            stack.append(2)
-            floor.append(len(li)-2)
-        else:
-            stack[-1] += 2
-        li.pop()
-        li.pop()
-
-    elif li[-1] == ')' and (s[i-1] == ']' or s[i-1] == ')'):
-        stack[-1] = stack[-1]*2
-        if len(stack) > 1:
-            stack[-2] += stack[-1]
-            stack.pop()
-        li.pop()
-        li.pop()
-        if len(floor) > 0:
-            floor.pop()
-    
-    elif li[-1] == ']' and s[i-1] == '[':
-        if len(stack) == 0 or (len(li)-2 not in floor):
-            stack.append(3)
-            floor.append(len(li)-2)
-        else:
-            stack[-1] += 3
-        li.pop()
-        li.pop()
-
-    elif li[-1] == ']' and (s[i-1] == ']' or s[i-1] == ')'):
-        stack[-1] = stack[-1]*3
-        if len(stack) > 1:
-            stack[-2] += stack[-1]
-            stack.pop()
-        li.pop()
-        li.pop()
-        if len(floor) > 0:
-            floor.pop()
-    
-    elif (li[-1] == ']' and s[i-1] == '(')or (li[-1] == ')' and s[i-1] == '['):
-        total = 0
-        break
-
-    else:
-        pass
-
-    if len(li) == 0:
-        total += sum(stack)
-        stack = []
-        floor = []
-    
-print(total)
+def func1():
+    if len(array) == 1:
+        return print(0)
+    stack = []
+    numstack = []
+    total = 0
+    for i in range(len(array)):
+        if array[i] == '(':
+            stack.append(array[i])
+            numstack.append(2)
+        elif array[i] == '[':
+            stack.append(array[i])
+            numstack.append(3)
+        elif array[i] == ')':
+            if stack[-1] == '(':
+                if len(stack)>2 and stack[-2] == '(':
+                    numstack[-2] = numstack[-2]*numstack.pop()
+                stack.pop()
+                
+            elif stack[-1]
+            pass
+        elif array[i] == ']':
+            
+            pass

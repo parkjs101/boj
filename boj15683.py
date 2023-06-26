@@ -51,7 +51,7 @@ def rotate_cctv1(k, array, v):
         for i in range(n):
             for j in range(m):
                 if array[i][j] == 10+k:
-                    arr[i][j] = 0
+                    array[i][j] = 0
     return 
 
 def rotate_cctv2(k, array, v):
@@ -74,10 +74,10 @@ def rotate_cctv2(k, array, v):
             v += temp
             count_backtracking(k+1, array, v)
             v -= temp
-        for i in range(n):
-            for j in range(m):
-                if array[i][j] == 20+k:
-                    arr[i][j] = 0
+            for i in range(n):
+                for j in range(m):
+                    if array[i][j] == 20+k:
+                        array[i][j] = 0
     return 
 
 def rotate_cctv3(k, array, v):
@@ -106,7 +106,7 @@ def rotate_cctv3(k, array, v):
         for i in range(n):
             for j in range(m):
                 if array[i][j] == 30+k:
-                    arr[i][j] = 0
+                    array[i][j] = 0
     return
 
 def rotate_cctv4(k, array, v):
@@ -138,7 +138,7 @@ def rotate_cctv4(k, array, v):
         for i in range(n):
             for j in range(m):
                 if array[i][j] == 40+k:
-                    arr[i][j] = 0
+                    array[i][j] = 0
     return
 
 def rotate_cctv5(k, array, v):
@@ -162,7 +162,7 @@ def rotate_cctv5(k, array, v):
     for i in range(n):
             for j in range(m):
                 if array[i][j] == 50+k:
-                    arr[i][j] = 0
+                    array[i][j] = 0
     return
 
 count_backtracking(0, arr, v)

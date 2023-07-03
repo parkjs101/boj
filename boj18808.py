@@ -24,27 +24,23 @@ for l in range(k): #스티커 개수
       for j in range(m-len(sticker[l][0])+1):
         s_flag = True #스티커
         is_sticked = False
+        new_board = [item[:] for item in board]
         for o in range(len(sticker[l])): 
           for p in range(len(sticker[l][0])):
             if sticker[l][o][p] == 0:
               continue
-            elif sticker[l][o][p] == 1 and board[i+o][j+p] != 0:
+            elif sticker[l][o][p] == 1 and new_board[i+o][j+p] != 0:
               s_flag = False
               break
-            elif sticker[l][o][p] == 1 and board[i+o][j+p] == 0:
-              board[i+o][j+p] = l+1
+            elif sticker[l][o][p] == 1 and new_board[i+o][j+p] == 0:
+              new_board[i+o][j+p] = l+1
               is_sticked = True
           if s_flag == False:
             break
         if s_flag == True:
+          board = new_board
           b_flag = True
           break
-        else:
-          if is_sticked == True:
-            for a in range(n):
-              for b in range(m):
-                if board[a][b] == l+1:
-                  board[a][b] = 0
  
       if b_flag == True:
         break

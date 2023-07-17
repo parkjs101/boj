@@ -1,9 +1,14 @@
-N = int(input())
+n = int(input())
 s = list(map(int,input().split()))
 
-d = [1]
+dp = [0]*(n)
 
-#1 7 8 9 2 4 5 4
+for i in range(n):
+    for j in range(i):
+        if s[j] < s[i] and dp[j] + 1 > dp[i]:
+            dp[i] = dp[j] + 1
+    if dp[i] == 0:
+        dp[i] = 1
 
-for i in range(1, len(s)):
-    pass
+dp.sort()
+print(dp[n-1])
